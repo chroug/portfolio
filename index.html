@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentin Gerbaux | Développeur</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuration Tailwind pour un style minimaliste et "Brutaliste" -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#0a0a0a',
+                        surface: '#121212',
+                        borderline: '#27272a', // zinc-800
+                        primary: '#ffffff',
+                        muted: '#a1a1aa', // zinc-400
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Devicon & FontAwesome -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            /* Masquer la scrollbar pour un effet plus épuré, tout en gardant le scroll */
+            scrollbar-width: none;
+        }
+        body::-webkit-scrollbar {
+            display: none;
+        }
+        .grid-lines {
+            background-image: linear-gradient(to right, #27272a 1px, transparent 1px),
+                              linear-gradient(to bottom, #27272a 1px, transparent 1px);
+            background-size: 4rem 4rem;
+            background-position: center center;
+            opacity: 0.2;
+            z-index: -1;
+        }
+        /* Style des liens du menu latéral */
+        .nav-link.active {
+            color: #60a5fa !important;
+        }
+        .nav-link.active::before {
+            content: '>';
+            position: absolute;
+            left: -1.5rem;
+            color: #60a5fa;
+            font-family: 'JetBrains Mono', monospace;
+        }
+    </style>
+</head>
+<body class="antialiased font-sans selection:bg-white selection:text-black">
+
+    <!-- Background Grid -->
+    <div class="fixed inset-0 grid-lines pointer-events-none"></div>
+
+    <!-- Navigation mobile fixe (Accueil / Contact) -->
+    <div class="lg:hidden fixed top-0 left-0 w-full bg-background/90 backdrop-blur-md border-b border-borderline z-[100] p-4 flex justify-between items-center">
+        <span class="font-display font-bold uppercase text-xl">VG.</span>
+        <div class="flex gap-2">
+            <a href="#accueil" class="px-4 py-2 border border-borderline font-mono text-xs uppercase hover:bg-surface transition-colors">Accueil</a>
+            <a href="#contact" class="px-4 py-2 bg-white text-black font-mono font-bold text-xs uppercase hover:bg-muted transition-colors">Contact</a>
+        </div>
+    </div>
+
+    <!-- Wrapper Principal (ID accueil retiré d'ici pour être placé sur la vraie section) -->
+    <div class="max-w-[1400px] mx-auto min-h-screen lg:flex pt-16 lg:pt-0">
+        
+        <!-- SIDEBAR (Fixe sur Desktop) -->
+        <aside class="lg:w-[400px] lg:fixed lg:h-screen lg:border-r border-borderline p-8 md:p-12 flex flex-col justify-between bg-background/95 backdrop-blur-sm z-50">
+            <div>
+                <p class="font-mono text-xs text-muted mb-6 uppercase tracking-widest border border-borderline inline-block px-2 py-1">Portfolio</p>
+                <h1 class="font-display text-5xl md:text-6xl font-black uppercase leading-[0.9] tracking-tighter mb-4">
+                    Valentin<br>Gerbaux
+                </h1>
+                <h2 class="font-mono text-sm text-muted mb-8">Étudiant en BUT Informatique (2ème année)</h2>
+                
+                <nav class="hidden lg:flex flex-col space-y-4 font-mono text-sm mt-12">
+                    <a href="#about" class="nav-link relative text-muted hover:text-blue-400 transition-colors">01. À propos</a>
+                    <a href="#skills" class="nav-link relative text-muted hover:text-blue-400 transition-colors">02. Compétences</a>
+                    <a href="#projects" class="nav-link relative text-muted hover:text-blue-400 transition-colors">03. Réalisations</a>
+                    <a href="#contact" class="nav-link relative text-muted hover:text-blue-400 transition-colors">04. Contact</a>
+                </nav>
+            </div>
+
+            <div class="mt-12 lg:mt-0">
+                <div class="border-t border-borderline pt-6 space-y-4">
+                    <!-- Call to Action: Contact très visible -->
+                    <a href="#contact" class="flex items-center justify-center gap-3 w-full bg-white text-black font-display font-bold uppercase tracking-wider py-4 hover:scale-[1.02] hover:bg-gray-200 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.15)]">
+                        <i class="fas fa-paper-plane text-xl"></i>
+                        Me contacter
+                    </a>
+
+                    <!-- Réseaux Sociaux en grille (GitHub & LinkedIn) -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <a href="https://github.com/chroug" target="_blank" class="flex items-center justify-center gap-2 w-full border border-borderline bg-background text-white font-display font-bold uppercase text-xs tracking-wider py-3 hover:bg-surface hover:text-white transition-colors duration-300">
+                            <i class="fab fa-github text-lg"></i>
+                            GitHub
+                        </a>
+                        <!-- N'oublie pas de mettre le vrai lien de ton profil LinkedIn ici -->
+                        <a href="https://linkedin.com" target="_blank" class="flex items-center justify-center gap-2 w-full border border-borderline bg-background text-white font-display font-bold uppercase text-xs tracking-wider py-3 hover:bg-surface hover:text-[#0A66C2] transition-colors duration-300">
+                            <i class="fab fa-linkedin text-lg"></i>
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+
+                <div class="mt-6 text-xs font-mono text-muted">
+                    &copy; 2026 / v.gerbaux
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="lg:ml-[400px] flex-1 pb-24">
+            
+            <!-- Section Accueil (Invisible, sert uniquement de point de repère pour le menu) -->
+            <section id="accueil"></section>
+
+            <!-- Section À propos -->
+            <section id="about" class="p-8 md:p-12 border-b border-borderline scroll-mt-20 lg:scroll-mt-0">
+                <div class="flex items-center gap-4 mb-10">
+                    <span class="font-mono text-muted text-sm">01.</span>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold uppercase">À propos</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 xl:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="font-mono text-sm text-white mb-4 uppercase border-b border-borderline pb-2">Ma vision du code</h3>
+                        <p class="text-muted leading-relaxed mb-6">
+                            Le développement informatique n'est pas qu'une discipline pour moi, c'est un outil pour résoudre des problèmes complexes et créer des solutions tangibles. J'aime particulièrement la rigueur que demande l'algorithmique et la satisfaction de voir un système fonctionner parfaitement après l'avoir pensé de A à Z.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="font-mono text-sm text-white mb-4 uppercase border-b border-borderline pb-2">Parcours</h3>
+                        <div class="space-y-6">
+                            <div class="border-l-2 border-white pl-4">
+                                <p class="font-mono text-xs text-muted mb-1">Depuis 2024</p>
+                                <h4 class="font-bold text-lg">BUT Informatique</h4>
+                                <p class="text-sm text-muted">IUT de REIMS</p>
+                                <ul class="mt-2 text-sm text-muted list-none space-y-1">
+                                    <li>- Programmation, algorithmique & structures de données</li>
+                                    <li>- Développement web & Base de données complexes</li>
+                                    <li>- Systèmes, réseaux et Linux</li>
+                                </ul>
+                            </div>
+                            <div class="border-l-2 border-borderline pl-4">
+                                <p class="font-mono text-xs text-muted mb-1">2023 - 2024</p>
+                                <h4 class="font-bold text-lg">Baccalauréat Général</h4>
+                                <p class="text-sm text-muted">Lycée Frédéric Ozanam (Spé Maths/NSI)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Compétences -->
+            <section id="skills" class="border-b border-borderline scroll-mt-20 lg:scroll-mt-0">
+                <div class="p-8 md:p-12 border-b border-borderline">
+                    <div class="flex items-center gap-4 mb-8">
+                        <span class="font-mono text-muted text-sm">02.</span>
+                        <h2 class="font-display text-3xl md:text-4xl font-bold uppercase">Compétences</h2>
+                    </div>
+                </div>
+
+                <!-- Grille Minimaliste de compétences : colonnes ajustées (2, 3, 4, 6) pour 12 éléments (zéro espace vide) -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-[1px] bg-borderline border-b border-borderline">
+                    <div class="p-8 flex flex-col items-center justify-center gap-3 bg-background hover:bg-surface transition-colors">
+                        <i class="devicon-python-plain colored text-4xl"></i><span class="font-mono text-xs">Python</span>
+                    </div>
+                    <div class="p-8 flex flex-col items-center justify-center gap-3 bg-background hover:bg-surface transition-colors">
+                        <i class="devicon-csharp-plain colored text-4xl"></i><span class="font-mono text-xs">C#</span>
+                    </div>
+                    <div class="p-8 flex flex-col items-center justify-center gap-3 bg-background hover:bg-surface transition-colors">
+                        <i class="devicon-php-plain colored text-4xl"></i><span class="font-mono text-xs">PHP</span>
+                    </div>
+                    <div class="p-8 flex flex-col items-center justify-center gap-3 bg-background hover:bg-surface transition-colors">
+                        <i class="devicon-symfony-original text-4xl text-white"></i><span class="font-mono text-xs">Symfony</span>
+                    </div>
+                    <div class="p-8 flex flex-col items-center justify-center gap-3 bg-background hover:bg-surface transition-colors">
+                        <i class="devicon-mysql-plain colored text-4xl"></i><span class="font-mono text-xs">SQL</span>
+                    </div>
+                    <div class="p-8 flex flex-col items-center justify-center gap-3 bg-background hover:bg-surface transition-colors">
+                        <i class="devicon-html5-plain colored text-4xl"></i><span class="font-mono text-xs">HTML/CSS</span>
+                    </div>
+                    <div class="p-8 flex flex-col items-center justify-center gap-3 bg-background hover:bg-surface transition-colors">
+                        <i class="devicon-git-plain colored text-4xl"></i><span class="font-mono text-xs">Git</span>
+                    </div>
+                    <div class="p-8 flex flex-col items-center justify-center gap-3 bg-background hover:bg-surface transition-colors">
+                        <i class="devicon-gitlab-plain colored text-4xl"></i><span class="font-mono text-xs">GitLab</span>
+                    </div>
+                    <div class="p-8 flex flex-col items-center justify-center gap-3 bg-background hover:bg-surface transition-colors">
+                        <i class="devicon-linux-plain text-4xl text-white"></i><span class="font-mono text-xs">Linux</span>
+                    </div>
+                    <div class="p-8 flex flex-col items-center justify-center gap-3 bg-background hover:bg-surface transition-colors">
+                        <i class="devicon-docker-plain colored text-4xl"></i><span class="font-mono text-xs">Docker</span>
+                    </div>
+                    <div class="p-8 flex flex-col items-center justify-center gap-3 bg-background hover:bg-surface transition-colors">
+                        <i class="devicon-react-original colored text-4xl"></i><span class="font-mono text-xs">React</span>
+                    </div>
+                    <div class="p-8 flex flex-col items-center justify-center gap-3 bg-background hover:bg-surface transition-colors">
+                        <i class="devicon-nodejs-plain colored text-4xl"></i><span class="font-mono text-xs">Node.js</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Réalisations -->
+            <section id="projects" class="p-8 md:p-12 border-b border-borderline scroll-mt-20 lg:scroll-mt-0">
+                <div class="flex items-center gap-4 mb-10">
+                    <span class="font-mono text-muted text-sm">03.</span>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold uppercase">Réalisations</h2>
+                </div>
+
+                <div class="space-y-16">
+
+                    <!-- NOUVEAU PROJET : Resto N -->
+                    <article class="group">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+                            <div class="md:col-span-7">
+                                <div class="border border-borderline bg-surface overflow-hidden relative">
+                                    
+                                    <!-- [! INSTRUCTION POUR VALENTIN: IMAGE RESTO N !] -->
+                                    <!-- C'est ici que s'affiche la capture que tu m'as donnée. -->
+                                    <!-- Si tu veux la changer plus tard, remplace simplement le nom dans "src=" ci-dessous -->
+                                    
+                                    <img src="image_1856dc.png" alt="Resto N Interface" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-[1.02]">
+                                </div>
+                            </div>
+                            <div class="md:col-span-5 flex flex-col justify-center h-full">
+                                <h3 class="font-display text-2xl font-bold mb-4 uppercase">Resto N</h3>
+                                <p class="text-muted text-sm leading-relaxed mb-6">
+                                    Bienvenue sur le dépôt de l'application de gestion de restaurants. Cette application permet la gestion complète d'une plateforme de restauration : de la commande client à la gestion des stocks par les restaurateurs, en passant par la notation et les avis.
+                                </p>
+                                <div class="flex flex-wrap gap-2 font-mono text-xs mb-6">
+                                    <span class="border border-[#777BB4] text-[#777BB4] bg-[#777BB4]/10 px-2 py-1">PHP</span>
+                                    <span class="border border-white text-white bg-white/10 px-2 py-1">Symfony</span>
+                                    <span class="border border-[#4479A1] text-[#4479A1] bg-[#4479A1]/10 px-2 py-1">MySQL</span>
+                                    <span class="border border-[#E34F26] text-[#E34F26] bg-[#E34F26]/10 px-2 py-1">HTML/CSS</span>
+                                    <span class="border border-[#F7DF1E] text-[#F7DF1E] bg-[#F7DF1E]/10 px-2 py-1">JavaScript</span>
+                                    <span class="border border-[#2496ED] text-[#2496ED] bg-[#2496ED]/10 px-2 py-1">Docker</span>
+                                </div>
+                                <a href="#" class="inline-flex items-center gap-2 font-mono text-sm hover:underline decoration-white underline-offset-4">
+                                    Voir le projet <i class="fas fa-arrow-right text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Projet 2 (Archive Roulette) -->
+                    <article class="group border-t border-borderline pt-16">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+                            <div class="md:col-span-5 md:order-2 flex flex-col justify-center h-full">
+                                <h3 class="font-display text-2xl font-bold mb-4 uppercase">Archive Roulette</h3>
+                                <p class="text-muted text-sm leading-relaxed mb-6">
+                                    La meilleure façon de faire une recherche aléatoire sur Internet Archive. Faites tourner la roulette pour trouver des films, des logiciels vintage, des audios et des médias perdus depuis la base de données d'Archive.org.
+                                </p>
+                                <div class="flex flex-wrap gap-2 font-mono text-xs mb-6">
+                                    <span class="border border-[#F7DF1E] text-[#F7DF1E] bg-[#F7DF1E]/10 px-2 py-1">JavaScript</span>
+                                    <span class="border border-[#E34F26] text-[#E34F26] bg-[#E34F26]/10 px-2 py-1">HTML5</span>
+                                    <span class="border border-[#1572B6] text-[#1572B6] bg-[#1572B6]/10 px-2 py-1">CSS3</span>
+                                    <span class="border border-[#3776AB] text-[#3776AB] bg-[#3776AB]/10 px-2 py-1">Python (API)</span>
+                                    <span class="border border-white text-white bg-white/10 px-2 py-1">JSON</span>
+                                </div>
+                            </div>
+                            <div class="md:col-span-7 md:order-1">
+                                
+                                <!-- [! INSTRUCTION POUR VALENTIN: IMAGE ARCHIVE ROULETTE (OPTIONNEL) !] -->
+                                <!-- Actuellement c'est une grande icône qui s'affiche. -->
+                                <!-- Si tu as une capture d'écran à mettre, SUPPRIME toute la balise <div class="border border-borderline..."> ci-dessous -->
+                                <!-- Et REMPLACE-LA par une balise image comme celle-ci : -->
+                                <!-- <img src="ton_image.jpg" alt="Archive Roulette" class="w-full h-auto border border-borderline object-cover transform transition-transform duration-700 group-hover:scale-[1.02]"> -->
+                                
+                                <div class="border border-borderline bg-surface aspect-[16/9] flex items-center justify-center p-8 text-center text-muted group-hover:bg-white/5 transition-colors duration-500">
+                                    <i class="fas fa-random text-6xl opacity-30 group-hover:opacity-100 group-hover:text-white transition-all duration-500"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Projet 3 (Labyrinthes) -->
+                    <article class="group border-t border-borderline pt-16">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+                            <div class="md:col-span-7">
+                                
+                                <!-- [! INSTRUCTION POUR VALENTIN: IMAGE LABYRINTHE (OPTIONNEL) !] -->
+                                <!-- Même logique ici. Pour mettre une vraie image du labyrinthe, SUPPRIME la <div> ci-dessous -->
+                                <!-- Et REMPLACE-LA par une balise image comme celle-ci : -->
+                                <!-- <img src="ton_labyrinthe.png" alt="Générateur de Labyrinthes" class="w-full h-auto border border-borderline object-cover transform transition-transform duration-700 group-hover:scale-[1.02]"> -->
+                                
+                                <div class="border border-borderline bg-surface aspect-[16/9] flex items-center justify-center p-8 text-center text-muted">
+                                    <i class="fas fa-route text-6xl opacity-30 group-hover:opacity-100 transition-opacity"></i>
+                                </div>
+                            </div>
+                            <div class="md:col-span-5 flex flex-col justify-center h-full">
+                                <h3 class="font-display text-2xl font-bold mb-4 uppercase">Générateur de Labyrinthes</h3>
+                                <p class="text-muted text-sm leading-relaxed mb-6">
+                                    Projet algorithmique centré sur la génération et la résolution de labyrinthes parfaits. Mise en œuvre concrète d'algorithmes de recherche et de tri.
+                                </p>
+                                <div class="flex flex-wrap gap-2 font-mono text-xs mb-6">
+                                    <span class="border border-[#239120] text-[#239120] bg-[#239120]/10 px-2 py-1">C#</span>
+                                    <span class="border border-[#3776AB] text-[#3776AB] bg-[#3776AB]/10 px-2 py-1">Python</span>
+                                    <span class="border border-[#F05032] text-[#F05032] bg-[#F05032]/10 px-2 py-1">Git</span>
+                                    <span class="border border-white text-white bg-white/10 px-2 py-1">Algorithmique</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- Section Contact Form -->
+            <section id="contact" class="p-8 md:p-12 scroll-mt-20 lg:scroll-mt-0">
+                <div class="flex items-center gap-4 mb-10">
+                    <span class="font-mono text-muted text-sm">04.</span>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold uppercase">Contact</h2>
+                </div>
+
+                <div class="max-w-2xl border border-borderline bg-surface p-6 md:p-8">
+                    <!-- Formulaire factice : l'action mailto est retirée, on utilise JS pour gérer la soumission -->
+                    <form id="fakeContactForm" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="flex flex-col gap-2">
+                                <label for="prenom" class="font-mono text-xs uppercase tracking-wider">Prénom *</label>
+                                <input type="text" id="prenom" name="Prenom" required class="bg-background border border-borderline p-3 text-white focus:outline-none focus:border-white transition-colors rounded-none">
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label for="nom" class="font-mono text-xs uppercase tracking-wider">Nom *</label>
+                                <input type="text" id="nom" name="Nom" required class="bg-background border border-borderline p-3 text-white focus:outline-none focus:border-white transition-colors rounded-none">
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col gap-2">
+                            <label for="email" class="font-mono text-xs uppercase tracking-wider">Email pro *</label>
+                            <input type="email" id="email" name="Email" required class="bg-background border border-borderline p-3 text-white focus:outline-none focus:border-white transition-colors rounded-none">
+                        </div>
+                        
+                        <div class="flex flex-col gap-2">
+                            <label for="message" class="font-mono text-xs uppercase tracking-wider">Message *</label>
+                            <textarea id="message" name="Message" rows="4" required class="bg-background border border-borderline p-3 text-white focus:outline-none focus:border-white transition-colors resize-y rounded-none"></textarea>
+                        </div>
+
+                        <div class="flex items-start gap-3 border border-borderline p-4 bg-background/50">
+                            <input type="checkbox" id="rgpd" name="RGPD" required class="mt-1 shrink-0 accent-white">
+                            <label for="rgpd" class="text-xs text-muted leading-tight">
+                                J'accepte que ces données soient utilisées pour être recontacté. Les informations sont envoyées directement via le client mail et ne sont pas stockées sur ce site. (Mentions légales respectées). *
+                            </label>
+                        </div>
+
+                        <button type="submit" id="submitBtn" class="w-full bg-white text-black font-display font-bold uppercase tracking-wider py-4 hover:bg-muted transition-colors rounded-none border-none">
+                            Envoyer la demande
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Footer avec Mentions Légales -->
+            <footer class="p-8 md:p-12 border-t border-borderline flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+                <div class="text-xs font-mono text-muted">
+                    &copy; <span id="currentYear"></span> / Valentin Gerbaux<br>
+                    <span class="opacity-50">Portfolio développé dans le cadre de mes études.</span>
+                </div>
+                <button onclick="toggleLegalModal()" class="text-xs font-mono text-white hover:text-muted transition-colors uppercase border-b border-transparent hover:border-white pb-1">
+                    Mentions Légales & Crédits
+                </button>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Modal Mentions Légales (Cachée par défaut) -->
+    <div id="legalModal" class="fixed inset-0 z-[200] bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-background border border-borderline max-w-2xl w-full max-h-[80vh] overflow-y-auto p-8 relative shadow-2xl">
+            <button onclick="toggleLegalModal()" class="absolute top-4 right-6 text-white text-3xl hover:text-muted transition-colors">&times;</button>
+            
+            <h2 class="font-display text-2xl font-bold uppercase mb-6 border-b border-borderline pb-4">Mentions Légales & RGPD</h2>
+            
+            <div class="space-y-6 font-mono text-sm text-muted">
+                <section>
+                    <h3 class="text-white uppercase mb-2">1. Éditeur du site</h3>
+                    <p><strong>Valentin Gerbaux</strong>, Étudiant en BUT Informatique (2ème année).<br>Email : valentingerbaux@gmail.com</p>
+                </section>
+                
+                <section>
+                    <h3 class="text-white uppercase mb-2">2. Hébergement</h3>
+                    <p>Ce site web statique est hébergé par <strong>GitHub Pages</strong>.</p>
+                </section>
+
+                <section>
+                    <h3 class="text-white uppercase mb-2">3. Crédits & Utilisation des Logos</h3>
+                    <p>Le design et le code de ce portfolio m'appartiennent. Toutefois, pour illustrer mes compétences, ce site utilise des ressources graphiques tierces respectant les licences open-source :</p>
+                    <ul class="list-none space-y-2 mt-3 border-l-2 border-borderline pl-4">
+                        <li>- <strong>Devicon</strong> : Logos des technologies (Python, PHP, Docker, etc.). Distribué sous licence MIT.</li>
+                        <li>- <strong>FontAwesome</strong> : Icônes d'interface utilisateur. Distribué sous licence SIL OFL 1.1.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3 class="text-white uppercase mb-2">4. Données Personnelles (RGPD)</h3>
+                    <p>Le formulaire de contact présent sur le site utilise un format d'envoi transparent. <strong>Aucune donnée personnelle n'est stockée dans une base de données sur ce serveur</strong>. Les informations que vous saisissez (Nom, Prénom, Email) servent uniquement à initier une communication par e-mail afin que je puisse vous recontacter.</p>
+                </section>
+            </div>
+            
+            <div class="mt-8 pt-6 border-t border-borderline text-right">
+                <button onclick="toggleLegalModal()" class="px-6 py-2 bg-white text-black font-display font-bold uppercase text-sm hover:bg-muted transition-colors rounded-none border-none">J'ai compris</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation flottante (Mobile uniquement) pour accès Accueil/Contact permanent -->
+    <div class="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-6 bg-background/95 backdrop-blur-md border border-borderline px-8 py-4 shadow-2xl">
+        <a href="#accueil" class="text-xs font-mono text-white hover:text-muted transition-colors uppercase flex items-center gap-2 internal-link">
+            <i class="fas fa-arrow-up"></i> Accueil
+        </a>
+        <div class="w-px h-4 bg-borderline"></div>
+        <a href="#contact" class="text-xs font-mono text-white hover:text-muted transition-colors uppercase flex items-center gap-2 internal-link">
+            <i class="fas fa-envelope"></i> Contact
+        </a>
+    </div>
+
+    <!-- Script de fonctionnalités -->
+    <script>
+        // Met l'année courante dynamiquement dans le footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // -- GESTION DU DÉFILEMENT FLUIDE (SMOOTH SCROLL) AU CLIC --
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                // On ne bloque que les vrais liens d'ancrage
+                if(targetId !== '#' && targetId.startsWith('#')) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        // Met à jour l'URL (proprement, sans faire sauter la page)
+                        history.pushState(null, null, targetId);
+                    }
+                }
+            });
+        });
+
+        // -- GESTION DE LA NAVIGATION LATÉRALE (Scroll Spy) --
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        window.addEventListener("scroll", () => {
+            let current = "";
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                // Ajustement pour déclencher le changement de lien un peu avant d'arriver sur la section
+                if (scrollY >= sectionTop - 300) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach((link) => {
+                link.classList.remove("active", "text-white");
+                if (current && link.getAttribute("href").includes(current)) {
+                    link.classList.add("active", "text-white");
+                }
+            });
+        });
+
+        // -- GESTION DE LA MODALE DES MENTIONS LÉGALES --
+        function toggleLegalModal() {
+            const modal = document.getElementById('legalModal');
+            modal.classList.toggle('hidden');
+            // Empêche le scroll du site en arrière-plan quand la modale est ouverte
+            if (!modal.classList.contains('hidden')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        // -- GESTION DU FORMULAIRE FACTICE --
+        document.getElementById('fakeContactForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Empêche le rechargement de la page et l'envoi du mail
+            
+            const btn = document.getElementById('submitBtn');
+            const originalText = btn.innerHTML;
+            
+            // État de succès visuel
+            btn.innerHTML = '<i class="fas fa-check"></i> Message envoyé (Factice)';
+            btn.classList.add('bg-green-600', 'text-white');
+            btn.classList.remove('bg-white', 'text-black', 'hover:bg-muted');
+            
+            // Vide les champs du formulaire
+            this.reset();
+            
+            // Remet le bouton à son état normal après 4 secondes
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.classList.remove('bg-green-600', 'text-white');
+                btn.classList.add('bg-white', 'text-black', 'hover:bg-muted');
+            }, 4000);
+        });
+    </script>
+</body>
+</html>
