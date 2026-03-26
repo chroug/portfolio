@@ -76,9 +76,12 @@
     <!-- Navigation mobile fixe (Accueil / Contact) -->
     <div class="lg:hidden fixed top-0 left-0 w-full bg-background/90 backdrop-blur-md border-b border-borderline z-[100] p-4 flex justify-between items-center">
         <span class="font-display font-bold uppercase text-xl">VG.</span>
-        <div class="flex gap-2">
-            <a href="#accueil" class="px-4 py-2 border border-borderline font-mono text-xs uppercase hover:bg-surface transition-colors">Accueil</a>
-            <a href="#contact" class="px-4 py-2 bg-white text-black font-mono font-bold text-xs uppercase hover:bg-muted transition-colors">Contact</a>
+        <div class="flex gap-2 items-center">
+            <a href="#accueil" class="hidden sm:block px-3 py-2 border border-borderline font-mono text-xs uppercase hover:bg-surface transition-colors">Accueil</a>
+            <a href="CV_Gerbaux_Valentin-1.pdf" download="CV_Valentin_Gerbaux.pdf" class="px-3 py-2 border border-borderline text-white font-mono font-bold text-xs uppercase hover:bg-surface transition-colors flex items-center gap-2">
+                <i class="fas fa-file-download"></i> <span class="hidden sm:inline">CV</span>
+            </a>
+            <a href="#contact" class="px-3 py-2 bg-white text-black font-mono font-bold text-xs uppercase hover:bg-muted transition-colors">Contact</a>
         </div>
     </div>
 
@@ -104,13 +107,17 @@
 
             <div class="mt-12 lg:mt-0">
                 <div class="border-t border-borderline pt-6 space-y-4">
-                    <!-- Call to Action: Contact très visible -->
-                    <a href="#contact" class="flex items-center justify-center gap-3 w-full bg-white text-black font-display font-bold uppercase tracking-wider py-4 hover:scale-[1.02] hover:bg-gray-200 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.15)]">
-                        <i class="fas fa-paper-plane text-xl"></i>
-                        Me contacter
-                    </a>
+                    <div class="flex flex-col gap-3">
+                        <a href="#contact" class="flex items-center justify-center gap-3 w-full bg-white text-black font-display font-bold uppercase tracking-wider py-4 hover:scale-[1.02] hover:bg-gray-200 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.15)]">
+                            <i class="fas fa-paper-plane text-xl"></i>
+                            Me contacter
+                        </a>
+                        <a href="CV_Gerbaux_Valentin-1.pdf" download="CV_Valentin_Gerbaux.pdf" class="flex items-center justify-center gap-3 w-full border border-borderline bg-background text-white font-display font-bold uppercase text-sm tracking-wider py-3 hover:bg-surface transition-colors duration-300">
+                            <i class="fas fa-file-download text-lg"></i>
+                            Télécharger mon CV
+                        </a>
+                    </div>
 
-                    <!-- Réseaux Sociaux en grille (GitHub & LinkedIn) -->
                     <div class="grid grid-cols-2 gap-4">
                         <a href="https://github.com/chroug" target="_blank" class="flex items-center justify-center gap-2 w-full border border-borderline bg-background text-white font-display font-bold uppercase text-xs tracking-wider py-3 hover:bg-surface hover:text-white transition-colors duration-300">
                             <i class="fab fa-github text-lg"></i>
@@ -129,10 +136,10 @@
             </div>
         </aside>
 
-        <!-- MAIN CONTENT (Suppression du pb-24 qui causait le vide en bas) -->
+    
         <main class="lg:ml-[400px] flex-1">
             
-            <!-- Section Accueil (Invisible, sert uniquement de point de repère pour le menu) -->
+            
             <section id="accueil"></section>
 
             <!-- Section À propos -->
@@ -182,7 +189,7 @@
                     </div>
                 </div>
 
-                <!-- Grille Minimaliste de compétences -->
+                <!-- Grille de compétences -->
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-[1px] bg-borderline border-b border-borderline">
                     <div class="p-8 flex flex-col items-center justify-center gap-3 bg-background hover:bg-surface transition-colors">
                         <i class="devicon-python-plain colored text-4xl"></i><span class="font-mono text-xs">Python</span>
@@ -232,13 +239,12 @@
 
                 <div class="space-y-16">
 
-                    <!-- NOUVEAU PROJET : Resto N -->
+                    <!-- Resto N -->
                     <article class="group">
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
                             <div class="md:col-span-7">
                                 <div class="border border-borderline bg-surface overflow-hidden relative">
-                                    <!-- [! INSTRUCTION POUR VALENTIN: IMAGE RESTO N !] -->
-                                    <!-- Remplace le lien "src=" ci-dessous si tu souhaites changer l'image -->
+                            
                                     <img src="1.png" alt="Resto N Interface" class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-[1.02]">
                                 </div>
                             </div>
@@ -262,7 +268,7 @@
                         </div>
                     </article>
 
-                    <!-- Projet 2 (Archive Roulette) -->
+                    <!-- Archive Roulette -->
                     <article class="group border-t border-borderline pt-16">
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
                             <div class="md:col-span-5 md:order-2 flex flex-col justify-center h-full">
@@ -282,8 +288,7 @@
                                 </a>
                             </div>
                             <div class="md:col-span-7 md:order-1">
-                                <!-- [! INSTRUCTION POUR VALENTIN: IMAGE ARCHIVE ROULETTE !] -->
-                                <!-- Remplace le lien "https://via.placeholder..." par le nom de ton image (ex: src="roulette.png") -->
+                        
                                 <div class="border border-borderline bg-surface overflow-hidden relative aspect-[16/9]">
                                     <img src="2.png" alt="Archive Roulette" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-[1.02]">
                                 </div>
@@ -291,12 +296,11 @@
                         </div>
                     </article>
 
-                    <!-- Projet 3 (Labyrinthes) -->
+                    <!-- Labyrinthes -->
                     <article class="group border-t border-borderline pt-16">
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
                             <div class="md:col-span-7">
-                                <!-- [! INSTRUCTION POUR VALENTIN: IMAGE LABYRINTHE !] -->
-                                <!-- Remplace le lien "https://via.placeholder..." par le nom de ton image (ex: src="labyrinthe.png") -->
+                                
                                 <div class="border border-borderline bg-surface overflow-hidden relative aspect-[16/9]">
                                     <img src="3.png" alt="Générateur de Labyrinthes" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-[1.02]">
                                 </div>
@@ -319,7 +323,7 @@
                 </div>
             </section>
 
-            <!-- Section Contact Formulaire (Maintenant sur 2 colonnes pour combler le vide) -->
+            <!-- Section Contact Formulaire  -->
             <section id="contact" class="p-8 md:p-12 scroll-mt-20 lg:scroll-mt-0">
                 <div class="flex items-center gap-4 mb-10">
                     <span class="font-mono text-muted text-sm">04.</span>
@@ -349,9 +353,9 @@
                         </div>
                     </div>
 
-                    <!-- Colonne de droite : Formulaire -->
+                    
                     <div class="border border-borderline bg-surface p-6 md:p-8 w-full">
-                        <form id="fakeContactForm" class="space-y-6">
+                        <form action="https://formspree.io/f/xzdkbqzr" method="POST" class="space-y-6">
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 <div class="flex flex-col gap-2">
                                     <label for="prenom" class="font-mono text-xs uppercase tracking-wider">Prénom *</label>
@@ -512,28 +516,8 @@
             }
         }
 
-        // -- GESTION DU FORMULAIRE FACTICE --
-        document.getElementById('fakeContactForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Empêche le rechargement de la page et l'envoi du mail
-            
-            const btn = document.getElementById('submitBtn');
-            const originalText = btn.innerHTML;
-            
-            // État de succès visuel
-            btn.innerHTML = '<i class="fas fa-check"></i> Message envoyé';
-            btn.classList.add('bg-green-600', 'text-white');
-            btn.classList.remove('bg-white', 'text-black', 'hover:bg-muted');
-            
-            // Vide les champs du formulaire
-            this.reset();
-            
-            // Remet le bouton à son état normal après 4 secondes
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.classList.remove('bg-green-600', 'text-white');
-                btn.classList.add('bg-white', 'text-black', 'hover:bg-muted');
-            }, 4000);
-        });
+    
+    
     </script>
 </body>
 </html>
