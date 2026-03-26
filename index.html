@@ -368,7 +368,7 @@
                             </div>
                             
                             <div class="flex flex-col gap-2">
-                                <label for="email" class="font-mono text-xs uppercase tracking-wider">Email pro *</label>
+                                <label for="email" class="font-mono text-xs uppercase tracking-wider">Email *</label>
                                 <input type="email" id="email" name="Email" required class="bg-background border border-borderline p-3 text-white focus:outline-none focus:border-white transition-colors rounded-none">
                             </div>
                             
@@ -455,7 +455,9 @@
             <i class="fas fa-envelope"></i> Contact
         </a>
     </div>
-
+    <button id="scrollToTopBtn" aria-label="Remonter en haut" class="fixed bottom-24 right-6 md:bottom-12 md:right-12 z-[100] bg-white text-black p-3 w-12 h-12 flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.15)] opacity-0 pointer-events-none translate-y-4 transition-all duration-300 hover:bg-gray-200 hover:-translate-y-1">
+        <i class="fas fa-arrow-up text-xl"></i>
+    </button>
     <!-- Script de fonctionnalités -->
     <script>
         // Met l'année courante dynamiquement dans le footer
@@ -474,7 +476,6 @@
                             behavior: 'smooth',
                             block: 'start'
                         });
-                        // Met à jour l'URL (proprement, sans faire sauter la page)
                         history.pushState(null, null, targetId);
                     }
                 }
@@ -515,6 +516,26 @@
                 document.body.style.overflow = '';
             }
         }
+
+        // -- GESTION DU BOUTON RETOUR EN HAUT --
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                scrollToTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+                scrollToTopBtn.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+            } else {
+                scrollToTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+                scrollToTopBtn.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            history.pushState(null, null, window.location.pathname);
+        });
 
     
     
