@@ -12,7 +12,7 @@
     <meta property="og:title" content="Valentin Gerbaux | Portfolio">
     <meta property="og:description" content="Étudiant en BUT Informatique, passionné par le développement. Découvrez mes projets et mon CV.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://chroug.github.io/portfolio/"> <meta property="og:image" content="https://chroug.github.io/portfolio/preview.png"> ```
+    <meta property="og:url" content="https://chroug.github.io/portfolio/"> <meta property="og:image" content="https://chroug.github.io/portfolio/preview.png"> 
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -378,9 +378,12 @@
                             
                             <div class="flex flex-col gap-2">
                                 <label for="email" class="font-mono text-xs uppercase tracking-wider">Email</label>
-                                <input type="password" id="email" name="Email" autocomplete="email" required class="bg-background border border-borderline p-3 text-white focus:outline-none focus:border-white transition-colors rounded-none">
+                                <input type="email" id="email" name="Email" autocomplete="email" required class="bg-background border border-borderline p-3 text-white focus:outline-none focus:border-white transition-colors rounded-none">
                             </div>
-                            
+                            <div class="flex flex-col gap-2">
+                                <label for="message" class="font-mono text-xs uppercase tracking-wider">Message</label>
+                                <textarea id="message" name="Message" rows="4" required class="bg-background border border-borderline p-3 text-white focus:outline-none focus:border-white transition-colors resize-y rounded-none"></textarea>
+                            </div>
 
 
                             <div class="flex items-start gap-3 border border-borderline p-4 bg-background/50">
